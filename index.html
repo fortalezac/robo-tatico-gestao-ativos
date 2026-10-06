@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robô Tático & Gestão de Ativos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div>
+          <h1>Robô Tático & Gestão de Ativos</h1>
+          <p class="subtitle">Mercado lateral. Aguarde o toque nas resistências. Sincronizado com corretoras (XP e Rico).</p>
+        </div>
+      </header>
+
+      <section class="summary-grid">
+        <article class="card summary-card principal">
+          <small>Patrimônio Geral</small>
+          <h2 id="patrimonioTotal">R$ 0,00</h2>
+          <p id="resumoConta">Rico: R$ 0,00 | XP: R$ 0,00</p>
+        </article>
+
+        <article class="card summary-card">
+          <small>Conta Rico</small>
+          <h3 id="valorRico">R$ 0,00</h3>
+          <p id="metaRico">Aplicado: R$ 0,00 | Bolsa: R$ 0,00</p>
+        </article>
+
+        <article class="card summary-card">
+          <small>Conta XP</small>
+          <h3 id="valorXP">R$ 0,00</h3>
+          <p id="metaXP">Aplicado: R$ 0,00 | Bolsa: R$ 0,00</p>
+        </article>
+
+        <article class="card summary-card green">
+          <small>Caixa & Bolso</small>
+          <h3 id="caixaBolso">R$ 0,00</h3>
+          <p id="caixaResumo">Caixa (70%): R$ 0,00 | Bolso (20%): R$ 0,00</p>
+        </article>
+      </section>
+
+      <section id="alertaAporte" class="alert-box">
+        <strong>🤖 Inteligência do Robô para Aporte Rápido:</strong>
+        <span>Calculando melhor oportunidade com o saldo em caixa...</span>
+      </section>
+
+      <section class="toolbar card">
+        <div class="control-group">
+          <label for="metaLucro">Meta Mínima de Lucro para Venda (%)</label>
+          <input id="metaLucro" type="number" value="5" step="0.5" />
+        </div>
+
+        <div class="control-group">
+          <label for="tetoRadar">Preço Máximo de Ação no Radar (R$)</label>
+          <input id="tetoRadar" type="number" value="20" step="1" />
+        </div>
+
+        <div class="control-group actions">
+          <button id="btnVarredura" class="btn btn-primary">Varredura & Sincronização</button>
+        </div>
+      </section>
+
+      <section class="toolbar card add-asset">
+        <div class="control-group">
+          <label for="novoTicker">Ticker do Ativo</label>
+          <input id="novoTicker" type="text" placeholder="Ex: PETR4" />
+        </div>
+
+        <div class="control-group">
+          <label for="novoSetor">Setor</label>
+          <input id="novoSetor" type="text" placeholder="Ex: Energia" />
+        </div>
+
+        <div class="control-group">
+          <label for="novaCorretora">Corretora / Status</label>
+          <select id="novaCorretora">
+            <option value="XP">XP</option>
+            <option value="Rico">Rico</option>
+            <option value="Radar">Radar</option>
+          </select>
+        </div>
+
+        <div class="control-group actions">
+          <button id="btnAdicionar" class="btn btn-success">Adicionar Ativo</button>
+        </div>
+      </section>
+
+      <section class="table-wrap card">
+        <table>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Ativo</th>
+              <th>Setor</th>
+              <th>Qtd / PM</th>
+              <th>Preço Atual</th>
+              <th>Suporte (Piso)</th>
+              <th>Resistência (Alvo)</th>
+              <th>Resultado / Alerta</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaAtivos"></tbody>
+        </table>
+      </section>
+
+      <section class="chart-panel card">
+        <h3>Distribuição Percentual dos Ativos Monitorados</h3>
+        <div class="chart-container">
+          <canvas id="graficoPatrimonio"></canvas>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
